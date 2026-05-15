@@ -2,6 +2,7 @@
 
 namespace Codebyray\ReviewRateable\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -26,6 +27,11 @@ class Review extends Model
     public function ratings(): HasMany
     {
         return $this->hasMany(Rating::class);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function scopeDepartment($query, $department)
